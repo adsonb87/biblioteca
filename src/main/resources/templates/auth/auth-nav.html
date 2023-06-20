@@ -9,7 +9,8 @@
     <ul th:fragment="nav" class="nav navbar-nav ms-auto">
         <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <span th:text="${#authentication.name}"></span>
+                <!--<span th:text="${#authentication.name}"></span>-->
+                <span th:text="${#authentication.getPrincipal().getNome()}"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end">
                 <a class="dropdown-item" href="#">Editar</a>

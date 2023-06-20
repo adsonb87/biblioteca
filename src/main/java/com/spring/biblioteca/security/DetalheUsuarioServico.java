@@ -31,13 +31,8 @@ public class DetalheUsuarioServico implements UserDetailsService {
         Usuario usuario = usuarioRepository.findByLogin(username);
 
         if(usuario != null && usuario.isAtivo()){
-            Set<GrantedAuthority> papeisDoUsuario = new HashSet<GrantedAuthority>();
-            for(Papel papel : usuario.getPapeis()){
-                GrantedAuthority pp = new SimpleGrantedAuthority(papel.getPapel());
-                papeisDoUsuario.add(pp);
-            }
-            User user = new User(usuario.getLogin(), usuario.getPassword(), papeisDoUsuario);
-            return user;
+            DetalheUsuario detalheUsuario = new DetalheUsuario(usuario);
+            return detalheUsuario;
         }else{
             throw new UsernameNotFoundException("Usuário não encontrado");
         }
